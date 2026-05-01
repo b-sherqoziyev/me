@@ -1,52 +1,67 @@
-// Node.js 18+ versiyalarida fetch global tarzda mavjud
-exports.handler = async (event, context) => {
+const https = require('https');
+
+exports.handler = async (event) => {
     if (event.httpMethod !== "POST") {
         return { statusCode: 405, body: "Method Not Allowed" };
     }
 
+    const { BOT_TOKEN, CHAT_ID } = process.env;
+
+    if (!BOT_TOKEN || !CHAT_ID) {
+        return { 
+            statusCode: 500, 
+            body: JSON.stringify({ error: "BOT_TOKEN yoki CHAT_ID topilmadi!" }) 
+        };
+    }
+
     try {
-        const { name, email, message } = JSON.parse(event.body);
-        const { BOT_TOKEN, CHAT_ID } = process.env;
+        const body = JSON.parse(event.body);
+        const messageText = `🚀 *Yangi xabar (Portfolio)*\n\n👤 *Ism:* ${body.name}\n📧 *Email:* ${body.email}\n💬 *Xabar:* ${body.message}`;
 
-        if (!BOT_TOKEN || !CHAT_ID) {
-            return { 
-                statusCode: 500, 
-                body: JSON.stringify({ error: "Bot ma'lumotlari Netlify sozlamalarida kiritilmagan!" }) 
-            };
-        }
-
-        const text = `🚀 *Yangi xabar (Portfolio)*\n\n` +
-                     `👤 *Ism:* ${name}\n` +
-                     `📧 *Email:* ${email}\n\n` +
-                     `💬 *Xabar:* \n${message}`;
-
-        const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
-        
-        const response = await fetch(url, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                chat_id: CHAT_ID,
-                text: text,
-                parse_mode: 'Markdown'
-            })
+        const data = JSON.stringify({
+            chat_id: CHAT_ID,
+            text: messageText,
+            parse_mode: 'Markdown'
         });
 
-        const result = await response.json();
+        const options = {
+            hostname: 'api.telegram.org',
+            port: 443,
+            path: `/bot${BOT_TOKEN}/sendMessage`,
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Content-Length': data.length
+            }
+        };
 
-        if (result.ok) {
-            return {
-                statusCode: 200,
-                body: JSON.stringify({ message: "Xabar muvaffaqiyatli yuborildi!" })
-            };
-        } else {
-            throw new Error(result.description);
-        }
+        return new Promise((resolve, reject) => {
+            const req = https.request(options, (res) => {
+                let responseBody = '';
+                res.on('data', (chunk) => responseBody += chunk);
+                res.on('end', () => {
+                    resolve({
+                        statusCode: res.statusCode,
+                        body: responseBody
+                    });
+                });
+            });
 
-    } catch (error) {
-        return {
-            statusCode: 500,
-            body: JSON.stringify({ error: error.message })
+            req.on('error', (error) => {
+                resolve({
+                    statusCode: 500,
+                    body: JSON.stringify({ error: error.message })
+                });
+            });
+
+            req.write(data);
+            req.end();
+        });
+
+    } catch (err) {
+        return { 
+            statusCode: 500, 
+            body: JSON.stringify({ error: "JSON parsing xatosi yoki boshqa ichki xato" }) 
         };
     }
 };
