@@ -142,17 +142,39 @@ document.addEventListener('DOMContentLoaded', async () => {
     // 9. Contact Form
     const contactForm = document.getElementById('contact-form');
     if (contactForm) {
-        contactForm.addEventListener('submit', (e) => {
+        contactForm.addEventListener('submit', async (e) => {
             e.preventDefault();
             const submitBtn = contactForm.querySelector('button');
+            const formData = {
+                name: document.getElementById('form-name').value,
+                email: document.getElementById('form-email').value,
+                message: document.getElementById('form-message').value
+            };
+
             submitBtn.textContent = 'Yuborilmoqda...';
             submitBtn.disabled = true;
-            setTimeout(() => {
-                alert('Xabaringiz muvaffaqiyatli yuborildi!');
-                contactForm.reset();
+
+            try {
+                const response = await fetch('/.netlify/functions/send-telegram', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(formData)
+                });
+
+                if (response.ok) {
+                    alert('Xabaringiz muvaffaqiyatli yuborildi!');
+                    contactForm.reset();
+                } else {
+                    const err = await response.json();
+                    throw new Error(err.error || 'Xatolik yuz berdi');
+                }
+            } catch (error) {
+                console.error('Xabar yuborishda xatolik:', error);
+                alert('Xatolik: ' + error.message);
+            } finally {
                 submitBtn.textContent = 'Xabar yuborish';
                 submitBtn.disabled = false;
-            }, 1500);
+            }
         });
     }
 
