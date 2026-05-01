@@ -13,7 +13,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     document.title = data.site.title;
     const copyrightEl = document.getElementById('copyright-text');
     if (copyrightEl) {
-        copyrightEl.innerHTML = `&copy; ${new Date().getFullYear()} ${data.site.copyright}. Barcha huquqlar himoyalangan.`;
+        const copyrightName = data.site.copyright ? ` ${data.site.copyright}` : "";
+        copyrightEl.innerHTML = `&copy; ${new Date().getFullYear()}${copyrightName}. Barcha huquqlar himoyalangan.`;
     }
 
     // 3. Populate Hero Section
