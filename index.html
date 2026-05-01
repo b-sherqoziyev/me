@@ -31,9 +31,9 @@
         <!-- Hero Section -->
         <section id="home" class="hero">
             <div class="container">
-                <span class="badge">Backend Bo'yicha Mutaxassis</span>
+                <span class="badge" id="hero-badge"></span>
                 <h1>Salom, Men <span class="typing"></span></h1>
-                <p>Murakkab backend tizimlar, API-lar va aqlli Telegram botlar yaratish bo'yicha ekspertman.</p>
+                <p id="hero-p"></p>
                 <div class="cta-buttons">
                     <a href="#contact" class="btn primary">Bog'lanish</a>
                     <a href="#blog" class="btn secondary">Maqolalarim</a>
@@ -46,12 +46,9 @@
             <div class="container">
                 <h2 class="section-title">Tajriba va Texnologiyalar</h2>
                 <div class="about-content">
-                    <p>Men asosan server-side loyihalar, ma'lumotlar bazasi arxitekturasi va yuqori yuklamali tizimlar bilan ishlayman. Har bir loyihada xavfsizlik va tezlikka alohida e'tibor qarataman.</p>
-                    <div class="skills-mini">
-                        <span><i class="fab fa-python"></i> Python</span>
-                        <span><i class="fas fa-server"></i> Django</span>
-                        <span><i class="fas fa-plug"></i> Rest API</span>
-                        <span><i class="fab fa-telegram"></i> Aiogram</span>
+                    <p id="about-bio"></p>
+                    <div class="skills-mini" id="skills-list">
+                        <!-- Skills will be injected here -->
                     </div>
                 </div>
             </div>
@@ -61,20 +58,8 @@
         <section id="blog" class="blog section">
             <div class="container">
                 <h2 class="section-title">Oxirgi maqolalar</h2>
-                <div class="blog-list">
-                    <article class="blog-post">
-                        <span class="date">May 1, 2026</span>
-                        <h3>Django Rest Framework bilan API xavfsizligi</h3>
-                        <p>JWT tokenlar va OAuth2 orqali tizimni himoya qilishning eng yaxshi usullari...</p>
-                        <a href="#" class="link">O'qish <i class="fas fa-chevron-right"></i></a>
-                    </article>
-
-                    <article class="blog-post">
-                        <span class="date">Aprel 25, 2026</span>
-                        <h3>Aiogram 3.x da murakkab botlar yaratish</h3>
-                        <p>FSM va Middleware-lardan foydalanib bot interaktivligini oshirish...</p>
-                        <a href="#" class="link">O'qish <i class="fas fa-chevron-right"></i></a>
-                    </article>
+                <div class="blog-list" id="blog-list">
+                    <!-- Blog posts will be injected here -->
                 </div>
             </div>
         </section>
@@ -84,6 +69,7 @@
         <section id="contact" class="contact section">
             <div class="container">
                 <h2 class="section-title">Bog'lanish</h2>
+                
                 <form id="contact-form">
                     <div class="form-group">
                         <input type="text" placeholder="Ismingiz" required>
@@ -102,11 +88,16 @@
 
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2026 Bahromjon. dev. Barcha huquqlar himoyalangan.</p>
-            <div class="socials">
-                <a href="https://t.me/bahromjon" target="_blank"><i class="fab fa-telegram"></i></a>
-                <a href="https://github.com/bahromjon" target="_blank"><i class="fab fa-github"></i></a>
-                <a href="https://linkedin.com/in/bahromjon" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <div class="footer-simple">
+                <div class="socials" id="footer-socials">
+                    <!-- Socials will be injected here -->
+                </div>
+                <div class="footer-contacts-simple" id="footer-contacts">
+                    <!-- Email and Phone will be injected here -->
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p id="copyright-text"></p>
             </div>
         </div>
     </footer>

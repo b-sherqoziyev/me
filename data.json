@@ -1,0 +1,70 @@
+{
+    "site": {
+        "title": "Bahromjon | Backend Developer",
+        "copyright": "2026"
+    },
+    "personal": {
+        "name": "Bahromjon",
+        "roles": [
+            "Bahromjon",
+            "Backend Dasturchi",
+            "Python Eksperti",
+            "Telegram Bot Creator",
+            "API Developer"
+        ],
+        "badge": "Backend Bo'yicha Mutaxassis",
+        "hero_p": "Murakkab backend tizimlar, API-lar va aqlli Telegram botlar yaratish bo'yicha ekspertman.",
+        "footer_bio": "Har qanday murakkablikdagi backend tizimlarni loyihalash va ishlab chiqishda sizga yordam beraman.",
+        "bio": "Men asosan server-side loyihalar, ma'lumotlar bazasi arxitekturasi va yuqori yuklamali tizimlar bilan ishlayman. Har bir loyihada xavfsizlik va tezlikka alohida e'tibor qarataman."
+    },
+    "skills": [
+        {
+            "name": "Python",
+            "icon": "fab fa-python"
+        },
+        {
+            "name": "Django",
+            "icon": "fas fa-server"
+        },
+        {
+            "name": "Rest API",
+            "icon": "fas fa-plug"
+        },
+        {
+            "name": "Aiogram",
+            "icon": "fab fa-telegram"
+        }
+    ],
+    "socials": [
+        {
+            "name": "Telegram",
+            "url": "https://t.me/bahromjon_py",
+            "icon": "fab fa-telegram"
+        },
+        {
+            "name": "GitHub",
+            "url": "https://github.com/b-sherqoziyev",
+            "icon": "fab fa-github"
+        }
+    ],
+    "blog": [
+        {
+            "id": 1,
+            "date": "May 1, 2026",
+            "title": "Django Rest Framework bilan API xavfsizligi",
+            "desc": "JWT tokenlar va OAuth2 orqali tizimni himoya qilishning eng yaxshi usullari...",
+            "link": "#"
+        },
+        {
+            "id": 2,
+            "date": "Aprel 25, 2026",
+            "title": "Aiogram 3.x da murakkab botlar yaratish",
+            "desc": "FSM va Middleware-lardan foydalanib bot interaktivligini oshirish...",
+            "link": "#"
+        }
+    ],
+    "contact": {
+        "email": "bahromjonsherqoziyev@gmail.com",
+        "phone": "+998 88 038 07 15"
+    }
+}
