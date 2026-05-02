@@ -1,22 +1,56 @@
 {
     "site": {
-        "title": "Bahromjon | Backend Developer",
+        "title": "Bahromjon | Backend Architecture Expert",
         "copyright": ""
     },
     "personal": {
         "name": "Bahromjon",
         "roles": [
-            "Bahromjon",
-            "Backend Dasturchi",
-            "Python Eksperti",
-            "Telegram Bot Creator",
-            "API Developer"
+            "Python Backend Expert",
+            "API Architect",
+            "Telegram Bot Developer",
+            "Database Specialist"
         ],
-        "badge": "Backend Bo'yicha Mutaxassis",
-        "hero_p": "Murakkab backend tizimlar, API-lar va aqlli Telegram botlar yaratish bo'yicha ekspertman.",
-        "footer_bio": "Har qanday murakkablikdagi backend tizimlarni loyihalash va ishlab chiqishda sizga yordam beraman.",
-        "bio": "Men asosan server-side loyihalar, ma'lumotlar bazasi arxitekturasi va yuqori yuklamali tizimlar bilan ishlayman. Har bir loyihada xavfsizlik va tezlikka alohida e'tibor qarataman."
+        "badge": "Backend Master",
+        "hero_title": "POWERFUL BACKEND SOLUTIONS",
+        "hero_p": "Biznesingiz uchun yuqori yuklamali tizimlar, xavfsiz API va murakkab Telegram ekotizimlarini yarataman.",
+        "footer_bio": "Har qanday murakkablikdagi backend tizimlarni loyihalash va ishlab chiqishda sizga yordam beraman."
     },
+    "expertise": [
+        {
+            "title": "API Development",
+            "icon": "fas fa-code",
+            "desc": "Django Rest Framework orqali professional, xavfsiz va tezkor API-lar yaratish. JWT auth, Swagger va optimallashtirilgan so'rovlar."
+        },
+        {
+            "title": "Telegram Ecosystem",
+            "icon": "fab fa-telegram",
+            "desc": "Aiogram 3.x kutubxonasida murakkab botlar, to'lov tizimlari va Mini App integratsiyalarini amalga oshirish."
+        },
+        {
+            "title": "Architecture & DB",
+            "icon": "fas fa-database",
+            "desc": "PostgreSQL, Redis va Celery yordamida yuqori yuklamali (high-load) tizimlar arxitekturasini qurish."
+        }
+    ],
+    "stats": [
+        {
+            "value": "1+",
+            "label": "Yillik Tajriba"
+        },
+        {
+            "value": "20+",
+            "label": "Muvaffaqiyatli Loyihalar"
+        },
+        {
+            "value": "10+",
+            "label": "Mamnun Mijozlar"
+        },
+        {
+            "value": "24/7",
+            "label": "Texnik Qo'llab-quvvatlash"
+        }
+    ],
     "skills": [
         {
             "name": "Python",
@@ -24,11 +58,19 @@
         },
         {
             "name": "Django",
-            "icon": "fas fa-server"
+            "icon": "fas fa-leaf"
         },
         {
-            "name": "Rest API",
-            "icon": "fas fa-plug"
+            "name": "PostgreSQL",
+            "icon": "fas fa-database"
+        },
+        {
+            "name": "Redis",
+            "icon": "fas fa-bolt"
+        },
+        {
+            "name": "Docker",
+            "icon": "fab fa-docker"
         },
         {
             "name": "Aiogram",
@@ -47,24 +89,9 @@
             "icon": "fab fa-github"
         }
     ],
-    "blog": [
-        {
-            "id": 1,
-            "date": "May 1, 2026",
-            "title": "Django Rest Framework bilan API xavfsizligi",
-            "desc": "JWT tokenlar va OAuth2 orqali tizimni himoya qilishning eng yaxshi usullari...",
-            "link": "#"
-        },
-        {
-            "id": 2,
-            "date": "Aprel 25, 2026",
-            "title": "Aiogram 3.x da murakkab botlar yaratish",
-            "desc": "FSM va Middleware-lardan foydalanib bot interaktivligini oshirish...",
-            "link": "#"
-        }
-    ],
     "contact": {
         "email": "bahromjonsherqoziyev@gmail.com",
-        "phone": "+998 88 038 07 15"
+        "phone": "+998 90 123 45 67",
+        "address": "Toshkent, O'zbekiston"
     }
 }

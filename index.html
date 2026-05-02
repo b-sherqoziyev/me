@@ -3,24 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bahromjon | Full-Stack Developer Portfolio</title>
-    <meta name="description" content="Bahromjon - Professional Full-stack dasturchi va UI/UX dizayner. Mening eng so'nggi loyihalarim va maqolalarim bilan tanishing.">
+    <title>Bahromjon | Backend Architect</title>
     <!-- Shriftlar va Ikonkalar -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-    <!-- Navigatsiya paneli -->
-    <header class="navbar" id="navbar">
+    <header class="navbar">
         <div class="container">
             <a href="#" class="logo-circle">B</a>
             <nav>
                 <ul class="nav-links">
                     <li><a href="#home">Asosiy</a></li>
+                    <li><a href="#expertise">Xizmatlar</a></li>
                     <li><a href="#about">Haqimda</a></li>
-                    <li><a href="#blog">Blog</a></li>
                     <li><a href="#contact">Bog'lanish</a></li>
                 </ul>
             </nav>
@@ -30,73 +28,81 @@
     <main>
         <!-- Hero Section -->
         <section id="home" class="hero">
-            <div class="container">
-                <span class="badge" id="hero-badge"></span>
-                <h1>Salom, Men <span class="typing"></span></h1>
-                <p id="hero-p"></p>
-                <div class="cta-buttons">
-                    <a href="#contact" class="btn primary">Bog'lanish</a>
-                    <a href="#blog" class="btn secondary">Maqolalarim</a>
+            <div class="container hero-grid">
+                <div class="hero-text">
+                    <span class="badge" id="hero-badge"></span>
+                    <h1 id="hero-title"></h1>
+                    <p class="hero-desc" id="hero-p"></p>
+                    <div class="hero-roles">
+                        <span class="typing"></span>
+                    </div>
+                    <div class="hero-btns">
+                        <a href="#contact" class="btn primary">Bog'lanish</a>
+                        <a href="#expertise" class="btn secondary">Xizmatlar</a>
+                    </div>
                 </div>
+                <div class="hero-visual">
+                    <div class="image-wrapper">
+                        <img src="hero.png" alt="Backend Architect">
+                        <div class="floating-icon icon-1"><i class="fab fa-python"></i></div>
+                        <div class="floating-icon icon-2"><i class="fab fa-telegram"></i></div>
+                        <div class="floating-icon icon-3"><i class="fas fa-database"></i></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Expertise Section -->
+        <section id="expertise" class="section expertise">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-badge">Mutaxassislik</span>
+                    <h2 class="section-title">Nimalar qila olaman?</h2>
+                </div>
+                <div class="expertise-grid" id="expertise-list"></div>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section class="stats-section">
+            <div class="container">
+                <div class="stats-grid" id="stats-list"></div>
             </div>
         </section>
 
         <!-- About Section -->
-        <section id="about" class="about section">
-            <div class="container">
-                <h2 class="section-title">Tajriba va Texnologiyalar</h2>
-                <div class="about-content">
+        <section id="about" class="section about">
+            <div class="container about-grid">
+                <div class="about-info">
+                    <h2 class="section-title text-left">Tajriba va Mahorat</h2>
                     <p id="about-bio"></p>
-                    <div class="skills-mini" id="skills-list">
-                        <!-- Skills will be injected here -->
-                    </div>
+                    <div class="skills-grid" id="skills-list"></div>
                 </div>
             </div>
         </section>
-
-        <!-- Blog Section -->
-        <section id="blog" class="blog section">
-            <div class="container">
-                <h2 class="section-title">Oxirgi maqolalar</h2>
-                <div class="blog-list" id="blog-list">
-                    <!-- Blog posts will be injected here -->
-                </div>
-            </div>
-        </section>
-
 
         <!-- Contact Section -->
-        <section id="contact" class="contact section">
+        <section id="contact" class="section contact">
             <div class="container">
-                <h2 class="section-title">Bog'lanish</h2>
-                
-                <form id="contact-form">
-                    <div class="form-group">
+                <div class="section-header">
+                    <span class="section-badge">Bog'lanish</span>
+                    <h2 class="section-title">Xabar yuborish</h2>
+                </div>
+                <div class="contact-grid-simple">
+                    <form id="contact-form" class="cyber-form">
                         <input type="text" id="form-name" placeholder="Ismingiz" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="email" id="form-email" placeholder="Emailingiz" required>
-                    </div>
-                    <div class="form-group">
-                        <textarea id="form-message" placeholder="Xabaringizni bu yerga qoldiring..." rows="5" required></textarea>
-                    </div>
-                    <button type="submit" class="btn primary">Xabar yuborish</button>
-                </form>
+                        <textarea id="form-message" placeholder="Xabaringiz..." rows="5" required></textarea>
+                        <button type="submit" class="btn-glow">Xabar yuborish <i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
             </div>
         </section>
     </main>
 
     <footer class="footer">
         <div class="container">
-            <div class="footer-simple">
-                <div class="socials" id="footer-socials">
-                    <!-- Socials will be injected here -->
-                </div>
-                <div class="footer-contacts-simple" id="footer-contacts">
-                    <!-- Email and Phone will be injected here -->
-                </div>
-            </div>
             <div class="footer-bottom">
+                <div class="footer-socials" id="footer-socials"></div>
                 <p id="copyright-text"></p>
             </div>
         </div>
@@ -104,4 +110,4 @@
 
     <script src="script.js"></script>
 </body>
-</html>
+</html>

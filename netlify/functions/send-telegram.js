@@ -16,7 +16,8 @@ exports.handler = async (event) => {
 
     try {
         const body = JSON.parse(event.body);
-        const messageText = `🚀 *Yangi xabar (Portfolio)*\n\n👤 *Ism:* ${body.name}\n📧 *Email:* ${body.email}\n💬 *Xabar:* ${body.message}`;
+        // Email maydoni olib tashlangani uchun faqat Ism va Xabar yuboramiz
+        const messageText = `🚀 *Yangi xabar (Portfolio)*\n\n👤 *Ism:* ${body.name}\n💬 *Xabar:* ${body.message}`;
 
         const data = JSON.stringify({
             chat_id: CHAT_ID,
@@ -61,7 +62,7 @@ exports.handler = async (event) => {
     } catch (err) {
         return { 
             statusCode: 500, 
-            body: JSON.stringify({ error: "JSON parsing xatosi yoki boshqa ichki xato" }) 
+            body: JSON.stringify({ error: "JSON parsing xatosi yoki ichki xato" }) 
         };
     }
 };
