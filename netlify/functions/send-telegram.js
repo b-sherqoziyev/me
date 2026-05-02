@@ -9,15 +9,15 @@ exports.handler = async (event) => {
     try {
         const body = JSON.parse(event.body);
         
-        // HTML formatida tartibli xabar
-        const messageText = `<b>🚀 Yangi xabar (Portfolio)</b>\n\n` +
+        // Matnni HTML rejimiga moslab tayyorlash
+        const messageText = `<b>🚀 Yangi xabar</b>\n\n` +
                             `<b>👤 Ism:</b> ${body.name}\n` +
-                            `<b>💬 Xabar:</b>\n<i>${body.message}</i>`;
+                            `<b>💬 Xabar:</b> ${body.message}`;
 
         const data = JSON.stringify({
             chat_id: CHAT_ID,
             text: messageText,
-            parse_mode: 'HTML' // HTML rejimi yulduzchalarsiz ishlaydi
+            parse_mode: 'HTML'
         });
 
         const options = {
@@ -27,13 +27,15 @@ exports.handler = async (event) => {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Content-Length': data.length
+                'Content-Length': Buffer.byteLength(data)
             }
         };
 
         return new Promise((resolve) => {
             const req = https.request(options, (res) => {
-                resolve({ statusCode: 200, body: "OK" });
+                let resData = '';
+                res.on('data', chunk => resData += chunk);
+                res.on('end', () => resolve({ statusCode: 200, body: "OK" }));
             });
             req.on('error', () => resolve({ statusCode: 500, body: "Error" }));
             req.write(data);

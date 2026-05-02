@@ -10,12 +10,10 @@ exports.handler = async (event) => {
         const userData = JSON.parse(event.body);
         const { first_name, last_name, username, id } = userData;
 
-        // HTML formatida tartibli tashrif xabari
         const text = `<b>🔔 Mini App: Yangi tashrif</b>\n\n` +
                      `<b>👤 Foydalanuvchi:</b> ${first_name || ''} ${last_name || ''}\n` +
                      `<b>🆔 ID:</b> <code>${id}</code>\n` +
-                     `<b>🔗 Username:</b> ${username ? '@' + username : 'mavjud emas'}\n` +
-                     `<b>⏰ Vaqt:</b> ${new Date().toLocaleString('uz-UZ')}`;
+                     `<b>🔗 Username:</b> ${username ? '@' + username : 'yo\'q'}`;
 
         const data = JSON.stringify({
             chat_id: CHAT_ID,
@@ -30,7 +28,7 @@ exports.handler = async (event) => {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Content-Length': data.length
+                'Content-Length': Buffer.byteLength(data)
             }
         };
 
