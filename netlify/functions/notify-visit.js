@@ -10,16 +10,17 @@ exports.handler = async (event) => {
         const userData = JSON.parse(event.body);
         const { first_name, last_name, username, id } = userData;
 
-        const text = `🔔 *Mini App: Yangi tashrif*\n\n` +
-                     `👤 *Foydalanuvchi:* ${first_name || ''} ${last_name || ''}\n` +
-                     `🆔 *ID:* ${id}\n` +
-                     `🔗 *Username:* ${username ? '@' + username : 'mavjud emas'}\n` +
-                     `⏰ *Vaqt:* ${new Date().toLocaleString('uz-UZ')}`;
+        // HTML formatida tartibli tashrif xabari
+        const text = `<b>🔔 Mini App: Yangi tashrif</b>\n\n` +
+                     `<b>👤 Foydalanuvchi:</b> ${first_name || ''} ${last_name || ''}\n` +
+                     `<b>🆔 ID:</b> <code>${id}</code>\n` +
+                     `<b>🔗 Username:</b> ${username ? '@' + username : 'mavjud emas'}\n` +
+                     `<b>⏰ Vaqt:</b> ${new Date().toLocaleString('uz-UZ')}`;
 
         const data = JSON.stringify({
             chat_id: CHAT_ID,
             text: text,
-            parse_mode: 'Markdown'
+            parse_mode: 'HTML'
         });
 
         const options = {
@@ -35,7 +36,7 @@ exports.handler = async (event) => {
 
         return new Promise((resolve) => {
             const req = https.request(options, (res) => {
-                resolve({ statusCode: 200, body: "Notified" });
+                resolve({ statusCode: 200, body: "OK" });
             });
             req.on('error', () => resolve({ statusCode: 500, body: "Error" }));
             req.write(data);

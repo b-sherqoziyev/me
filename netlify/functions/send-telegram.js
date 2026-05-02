@@ -1,28 +1,23 @@
 const https = require('https');
 
 exports.handler = async (event) => {
-    if (event.httpMethod !== "POST") {
-        return { statusCode: 405, body: "Method Not Allowed" };
-    }
+    if (event.httpMethod !== "POST") return { statusCode: 405, body: "Method Not Allowed" };
 
     const { BOT_TOKEN, CHAT_ID } = process.env;
-
-    if (!BOT_TOKEN || !CHAT_ID) {
-        return { 
-            statusCode: 500, 
-            body: JSON.stringify({ error: "BOT_TOKEN yoki CHAT_ID topilmadi!" }) 
-        };
-    }
+    if (!BOT_TOKEN || !CHAT_ID) return { statusCode: 500, body: "Config missing" };
 
     try {
         const body = JSON.parse(event.body);
-        // Email maydoni olib tashlangani uchun faqat Ism va Xabar yuboramiz
-        const messageText = `🚀 *Yangi xabar (Portfolio)*\n\n👤 *Ism:* ${body.name}\n💬 *Xabar:* ${body.message}`;
+        
+        // HTML formatida tartibli xabar
+        const messageText = `<b>🚀 Yangi xabar (Portfolio)</b>\n\n` +
+                            `<b>👤 Ism:</b> ${body.name}\n` +
+                            `<b>💬 Xabar:</b>\n<i>${body.message}</i>`;
 
         const data = JSON.stringify({
             chat_id: CHAT_ID,
             text: messageText,
-            parse_mode: 'Markdown'
+            parse_mode: 'HTML' // HTML rejimi yulduzchalarsiz ishlaydi
         });
 
         const options = {
@@ -36,33 +31,16 @@ exports.handler = async (event) => {
             }
         };
 
-        return new Promise((resolve, reject) => {
+        return new Promise((resolve) => {
             const req = https.request(options, (res) => {
-                let responseBody = '';
-                res.on('data', (chunk) => responseBody += chunk);
-                res.on('end', () => {
-                    resolve({
-                        statusCode: res.statusCode,
-                        body: responseBody
-                    });
-                });
+                resolve({ statusCode: 200, body: "OK" });
             });
-
-            req.on('error', (error) => {
-                resolve({
-                    statusCode: 500,
-                    body: JSON.stringify({ error: error.message })
-                });
-            });
-
+            req.on('error', () => resolve({ statusCode: 500, body: "Error" }));
             req.write(data);
             req.end();
         });
 
     } catch (err) {
-        return { 
-            statusCode: 500, 
-            body: JSON.stringify({ error: "JSON parsing xatosi yoki ichki xato" }) 
-        };
+        return { statusCode: 500, body: "Error" };
     }
 };
